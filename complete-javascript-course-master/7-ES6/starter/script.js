@@ -264,7 +264,7 @@ console.log(name6);
 
 ///////////////////////////////////////////
 // Lecture: Arrays
-
+/*
 const boxes = document.querySelectorAll('.box');
 
 //ES5
@@ -294,7 +294,7 @@ for(var i = 0; i < boxesArr5.length; i++) {
 */
 
 // ES6
-
+/*
 for (const cur of boxesArr6) {
     if(cur.className.includes('blue')) {
         continue;
@@ -302,3 +302,172 @@ for (const cur of boxesArr6) {
     cur.textContent = 'I chenged to blue!';
 
 }
+
+
+
+//ES5
+
+var ages = [12,17,8,21,14,11];
+
+var full = ages.map(function(cur){
+    return cur >=18;
+});
+
+console.log(full);
+console.log(full.indexOf(true));
+console.log(ages[full.indexOf(true)]);
+
+//ES6
+
+console.log(ages.findIndex(cur => {
+    cur >=18;
+}));
+console.log(ages.find(cur => cur >= 18));
+*/
+
+////////////////////////////////////////////
+/// Lecture: Spread Operator
+/*
+function addFourAges (a,b,c,d) {
+    return a+b+c+d;
+}
+
+var sum1 = addFourAges(18,30,12,21);
+
+console.log(sum1);
+
+//ES5
+var ages = [18,30,12,21];
+
+var sum2 = addFourAges.apply(null, ages);
+
+console.log(sum2);
+
+//ES6
+const sum3 = addFourAges(...ages);
+console.log(sum3);
+
+const familySmith = ['John', 'Jane', 'Mark'];
+const familyMiller = ['Marry', 'Bob', 'Ann'];
+const bigFamily = [...familySmith,...familyMiller];
+console.log(bigFamily);
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+
+const all = [h, ...boxes];
+
+Array.from(all).forEach(cur => {
+    cur.style.color = 'purple'
+});
+*/
+
+
+////////////////////////////////////////////
+// Lecture: REST Parameters
+
+/*
+//ES5
+function isFullAge5() {
+    //console.log(arguments);
+    var argsArray = Array.prototype.slice.call(arguments);
+    argsArray.forEach(function(cur) {
+        console.log((2018-cur) >= 18);
+    });
+}
+
+isFullAge5(1990,1995,1965);
+
+//ES6
+
+function isFullAge6(...years) {
+    //console.log(years);
+
+    years.forEach(cur => {
+        console.log((2016 - cur) >= 18);
+    })
+
+};
+
+isFullAge6(1990,1999,1965);
+*/
+/*
+//ES5
+function isFullAge5(limit) {
+    console.log(arguments);
+    var argsArray = Array.prototype.slice.call(arguments, 1);
+    console.log(argsArray);
+    argsArray.forEach(function(cur) {
+        console.log((2018-cur) >= limit);
+    });
+}
+
+isFullAge5(21,1990,1995,1965);
+
+//ES6
+
+function isFullAge6(limit, ...years) {
+    //console.log(years);
+
+    years.forEach(cur => {
+        console.log((2016 - cur) >= 18);
+    })
+
+};
+
+isFullAge6(21,1990,1999,1965);
+*/
+
+
+//////////////////////////////////////////////////
+/// Lecture: Default Parameters
+
+/*
+//ES5
+function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+    lastName === undefined ? lastName = 'Smith': lastName = lastName;
+    nationality === undefined ? nationality = 'American': nationality = nationality;
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', 1990);
+var emily = new SmithPerson('emily', 1985, 'Diaz', 'Spanish');
+
+console.log(john);
+console.log(emily);
+*/
+
+//ES6
+
+function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'American') {
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', 1990);
+var emily = new SmithPerson('emily', 1985, 'Diaz', 'Spanish');
+console.log(john);
+console.log(emily);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

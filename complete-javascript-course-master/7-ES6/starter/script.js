@@ -441,7 +441,7 @@ console.log(emily);
 */
 
 //ES6
-
+/*
 function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'American') {
     this.firstName = firstName;
     this.yearOfBirth = yearOfBirth;
@@ -453,8 +453,110 @@ var john = new SmithPerson('John', 1990);
 var emily = new SmithPerson('emily', 1985, 'Diaz', 'Spanish');
 console.log(john);
 console.log(emily);
+*/
 
 
+
+/////////////////////////////////////////////////////
+// Lecture: MAPS
+
+//Map is a new key value structure in ES6 
+/*
+const quest = new Map();
+
+quest.set('Question','What is the Official name of the latest major Javascript version?');
+quest.set(1, 'ES5');
+quest.set(2, 'ES6');
+quest.set(3, 'ES2015');
+quest.set(4, 'ES7');
+quest.set('correct', 3);
+quest.set(true, 'Correct Answer :D');
+quest.set(false, 'Wrong, Please Try Again!');
+
+
+console.log(quest.get('Question'));
+/*
+/*
+console.log(quest.size);
+if(quest.has(4)) {
+    //quest.delete(4);
+    console.log('Answer 4 is here')
+}
+*/
+//quest.clear();
+
+//We can loop over MAP
+// Method 1 : forEach
+/*
+quest.forEach((value, key) => {
+    console.log(`This is ${key}, and it's set to ${value}`);
+})
+*/
+//Method 2 : for Of loop
+/*
+for(let [key,value] of quest.entries()) {
+
+    if(typeof(key) === 'number')
+    console.log(`Answer ${key}: ${value}`);
+}
+
+const ans = parseInt(prompt('Write the correct answer'));
+console.log(quest.get(ans === quest.get('correct')));
+*/
+/*
+Reason why maps are better:-
+1. We can use anything as keys
+2. Maps are iterable and they make it very easy to manipulate through it.
+3. We can easily add and remove data from it.
+*/
+
+
+////////////////////////////////////////////////
+// Lecture: Classes
+
+// ES5
+var Person5 = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function() {
+    var age = new Date().getFullYear - this.yearOfBirth;
+    console.log(age);
+}
+
+var john5 = new Person5('john', 1990, 'teacher');
+john5.calculateAge();
+
+
+
+// ES6
+class Person6 {
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+    calculateAge() {
+        var age = new Date().getFullYear - this.yearOfBirth;
+        console.log(age); 
+    }
+
+    static gretting() {
+        console.log('Hey there!');
+    }
+}
+
+const john6 = new Person6('John', 1990, 'Teacher');
+
+Person6.gretting();
+
+//Class Definition is not Hoisted.
+// We can only add method to classes but not properties.
+
+
+//Static methods which are simply attached to the class but not inherited by class instances
 
 
 

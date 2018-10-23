@@ -22,15 +22,16 @@ class Park extends Element {
 
 // Class Street Prototype extending Element class
 class Street extends Element {
-    constructor(name, yearBuild, length, size) {
+    constructor(name, yearBuild, length, streetSize) {
         super(name, yearBuild);
         this.length = length;
         //this.size = size || 'normal';
         // size === undefined ? this.size = 'normal' : this.size = size;
-        if(name === 'tiny' || 'small' || 'normal' || 'big' || 'huge') {
-            this.name = name;
+        if(streetSize === 'tiny' || 'small' || 'normal' || 'big' || 'huge') {
+            this.streetSize = streetSize;
         } else {
-            this.name = 'normal';
+            console.log(`Entered here`);
+            this.streetSize = 'normal';
         }
     }
 }
@@ -65,4 +66,35 @@ park.forEach((key) => {
     if(key.treeCount >= 1000){
         console.log(`${key.name} has more than 1000 trees.`);
     }
+});
+
+
+
+// Adding streets
+let street1 = new Street('Ocean Avenue', 1999, 10, 'big');
+let street2 = new Street('Evergreen Street',2008, 1.25, 'small');
+let street3 = new Street('4th Street', 2015,6);
+let street4 = new Street('Sunset Bulevard', 1992, 18,'huge');
+
+console.log(street3);
+
+//Adding streets to a MAP
+let streets = new Map();
+streets.set('street1',street1);
+streets.set('street2',street2);
+streets.set('street3',street3);
+streets.set('street4',street4);
+
+//Find total and avg
+let streetTotal = 0;
+streets.forEach((key) => {
+    streetTotal += key.length;
+});
+
+const avgStreetLength = streetTotal/streets.size;
+// Final Console Output
+console.log(`---STREETS REPORT----`);
+console.log(`Our ${streets.size} streets have a total length of ${streetTotal} km, with an average of ${avgStreetLength} km.`);
+streets.forEach((key) => {
+    console.log(`${key.name}, build in ${key.yearBuild}, is a ${key.streetSize} street`);
 });

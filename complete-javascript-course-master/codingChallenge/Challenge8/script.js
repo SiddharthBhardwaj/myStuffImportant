@@ -27,10 +27,9 @@ class Street extends Element {
         this.length = length;
         //this.size = size || 'normal';
         // size === undefined ? this.size = 'normal' : this.size = size;
-        if(streetSize === 'tiny' || 'small' || 'normal' || 'big' || 'huge') {
+        if(streetSize === 'tiny' || streetSize === 'small' || streetSize === 'normal' || streetSize === 'big' || streetSize === 'huge') {
             this.streetSize = streetSize;
         } else {
-            console.log(`Entered here`);
             this.streetSize = 'normal';
         }
     }
@@ -76,8 +75,6 @@ let street2 = new Street('Evergreen Street',2008, 1.25, 'small');
 let street3 = new Street('4th Street', 2015,6);
 let street4 = new Street('Sunset Bulevard', 1992, 18,'huge');
 
-console.log(street3);
-
 //Adding streets to a MAP
 let streets = new Map();
 streets.set('street1',street1);
@@ -95,6 +92,7 @@ const avgStreetLength = streetTotal/streets.size;
 // Final Console Output
 console.log(`---STREETS REPORT----`);
 console.log(`Our ${streets.size} streets have a total length of ${streetTotal} km, with an average of ${avgStreetLength} km.`);
+// ForEach Call
 streets.forEach((key) => {
     console.log(`${key.name}, build in ${key.yearBuild}, is a ${key.streetSize} street`);
 });
